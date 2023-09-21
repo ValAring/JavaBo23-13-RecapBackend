@@ -40,7 +40,7 @@ public class KanbanService {
         todoRepository.save(updateTodo);
     }
 
-    /*public void deleteTodo(Todo thisTodo){
-        todoRepository.deleteById(thisTodo.getId());
-    }*/
+    public void delete(String id){
+        todoRepository.deleteById(id);
+    }
 }

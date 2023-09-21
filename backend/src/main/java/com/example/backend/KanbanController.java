@@ -3,6 +3,7 @@ package com.example.backend;
 import com.example.backend.model.Todo;
 import com.example.backend.model.TodoStatus;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,8 +37,9 @@ private final KanbanService kanbanService;
         this.kanbanService.updateTodo(updateTodo);
     }
 
-    /*@DeleteMapping("/{id}")
-    public void deleteTodo(@RequestBody Todo deleteTodo){
-        this.kanbanService.deleteTodo(deleteTodo);
-    }*/
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTodo(@PathVariable String id){
+        kanbanService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
