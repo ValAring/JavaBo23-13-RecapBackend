@@ -2,6 +2,7 @@ package com.example.backend;
 
 import com.example.backend.model.Todo;
 import com.example.backend.model.TodoRepository;
+import com.example.backend.model.TodoStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,22 @@ public class KanbanService {
                 newTodo.getDescription(),
                 newTodo.getStatus()
         );
-
         return todoRepository.save(todo);
     }
+
+    public Todo getTodoById(String id){
+        return todoRepository.findById(id).get();
+    }
+
+    public void updateTodo(Todo thisTodo){
+        Todo updateTodo = getTodoById(thisTodo.getId());
+        updateTodo.setDescription(thisTodo.getDescription());
+        updateTodo.setStatus(thisTodo.getStatus());
+
+        todoRepository.save(updateTodo);
+    }
+
+    /*public void deleteTodo(Todo thisTodo){
+        todoRepository.deleteById(thisTodo.getId());
+    }*/
 }
