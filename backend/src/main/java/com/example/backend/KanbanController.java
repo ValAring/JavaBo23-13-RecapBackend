@@ -11,8 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/todo")
 public class KanbanController {
-
-private final KanbanService kanbanService;
+    private final KanbanService kanbanService;
     public KanbanController(KanbanService kanbanService) {
         this.kanbanService = kanbanService;
     }
